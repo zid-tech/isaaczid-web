@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library App</title>
+    <title>Entertainment Hub</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,6 +25,7 @@
             z-index: 1000;
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
 
         header img {
@@ -35,10 +36,10 @@
         nav ul {
             list-style: none;
             padding: 0;
+            display: flex;
         }
 
         nav ul li {
-            display: inline;
             margin: 0 15px;
         }
 
@@ -51,46 +52,59 @@
             padding: 80px 20px;
             color: #fff;
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        #welcome {
+        .playlist-container {
             background: rgba(0, 0, 0, 0.7);
             padding: 10px;
-            border-radius: 2px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            margin: 20px 0;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        #encouragement {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            border-radius: 2px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            margin: 20px 0;
-            height: 50px;
+        .track {
             display: flex;
             align-items: center;
-            overflow: hidden;
+            margin: 5px;
+            padding: 5px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+            width: 150px; /* Fixed width for each track */
+            text-align: center;
         }
 
-        #movingText {
-            white-space: nowrap;
-            position: relative;
-            animation: moveText 10s linear infinite;
+        .track img {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
         }
 
-        @keyframes moveText {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+        .player {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
         }
 
         #search-bar {
             margin: 20px 0;
         }
 
-        input[type="text"], input[type="password"], input[type="file"] {
+        input[type="text"], input[type="file"] {
             padding: 10px;
-            width: 300px;
+            width: 100%;
+            max-width: 300px; /* Max width for inputs */
             border: none;
             border-radius: 2px;
             margin-bottom: 10px;
@@ -110,31 +124,9 @@
             background-color: #0056b3;
         }
 
-        #subjects {
-            margin: 20px 0;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .subject, .book {
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            margin: 10px;
-            padding: 15px;
-            border-radius: 5px;
-            flex: 1 1 calc(25% - 20px);
-            text-align: center;
-            min-width: 150px;
-            cursor: pointer;
-        }
-
-        #uploadSection, #onlineClassSection, #readingSection, #catalogSection {
-            display: none; /* Hide by default */
-            margin: 20px 0;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        audio {
+            width: 100%;
+            margin-top: 10px;
         }
 
         footer {
@@ -143,366 +135,111 @@
             background: rgba(0, 0, 0, 0.8);
             color: #fff;
             width: 100%;
+            position: fixed;
+            bottom: 0;
         }
 
-        /* Modal Styles */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.4);
-        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; 
-            padding: 20px;
-            border: 1px solid #888;
-            width: 300px; 
-        }
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
+            .track {
+                width: 90%; /* Make tracks full width on small screens */
+            }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .back-button {
-            margin-bottom: 10px;
-            background-color: #ccc;
-            color: black;
-        }
-
-        video {
-            width: 100%;
-            height: auto;
-            margin-top: 10px;
+            input[type="text"], input[type="file"], button {
+                max-width: 100%; /* Full width on small screens */
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Library Logo">
-        <h1>FOCUS LIBRARY</h1>
+        <img src="logo.png" alt="Entertainment Hub Logo">
+        <h1>ENTERTAINMENT HUB</h1>
         <nav>
             <ul>
                 <li><a href="#Home">Home</a></li>
-                <li><a href="#catalog" id="catalog-link">Book Catalog</a></li>
-                <li><a href="#online-classes" id="onlineClassesLink">Online Classes</a></li>
-                <li><a href="#reviews">User Reviews</a></li>
+                <li><a href="#music" id="music-link">Music</a></li>
+                <li><a href="#videos" id="videos-link">Videos</a></li>
+                <li><a href="#news" id="news-link">Entertainment News</a></li>
                 <li><a href="#contact">Contact Us</a></li>
-                <li><a href="#room.html">MANEB PAPERS</a></li>
                 <li><a href="#login" id="login-link">Login</a></li>
-                <li><a href="room.html" >ROOM</a>
             </ul>
         </nav>
     </header>
-
-    <main id="main">
-        <div id="welcome">
-            <h2>WELCOME TO OUR LIBRARY</h2>
+    <main>
+        <h2>Playlist</h2>
+        <div class="playlist-container" id="trackList">
+            <div class="track">
+                <img src="logo1.png" alt="Track Logo">
+                <div>
+                    <div class="player">
+                        <h2>PLAY</h2>
+                        <img id="songArtwork" src="logo1.png" alt="Song Artwork">
+                        <audio controls>
+                            <source src="USASIYE.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <strong>ZID ADHA</strong>
+                    <span>USASIYE</span>
+                </div>
+            </div>
+            <div class="track">
+                <img src="logo1.png" alt="Track Logo">
+                <div>
+                    <div class="player">
+                        <h2>PLAY</h2>
+                        <img id="songArtwork" src="logo1.png" alt="Song Artwork">
+                        <audio controls>
+                            <source src="SINDIZAOPA.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <strong>ZID ADHA</strong>
+                    <span>SINDIZAOPA</span>
+                </div>
+            </div>
+            <div class="track">
+                <img src="logo1.png" alt="Track Logo">
+                <div>
+                    <div class="player">
+                        <h2>PLAY</h2>
+                        <img id="songArtwork" src="logo1.png" alt="Song Artwork">
+                        <audio controls>
+                            <source src="MANTHA.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <strong>ZID ADHA</strong>
+                    <span>MANTHA</span>
+                </div>
+            </div>
+            <div class="track">
+                <img src="logo2.png" alt="Track Logo">
+                <div>
+                    <div class="player">
+                        <h2>PLAY</h2>
+                        <img id="songArtwork" src="logo1.png" alt="Song Artwork">
+                        <audio controls>
+                            <source src="MOYO.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <strong>ZID ADHA</strong>
+                    <span>MOYO OIPA</span>
+                </div>
+            </div>
+            <!-- Add more tracks as needed -->
         </div>
-        <div id="encouragement">
-            <div id="movingText"></div>
-        </div>
-        <div id="search-bar">
-            <input type="text" placeholder="Search for books and resources...">
-            <button type="button" id="searchButton">Search</button>
-        </div>
-        <h3>SUBJECTS & SERVICES</h3>
-        <div id="subjects">
-            <div class="subject" data-subject="english">ENGLISH</div>
-            <div class="subject" data-subject="mathematics">MATHEMATICS</div>
-            <div class="subject" data-subject="physics">PHYSICS</div>
-            <div class="subject" data-subject="chemistry">CHEMISTRY</div>
-            <div class="subject" data-subject="biology">BIOLOGY</div>
-            <div class="subject" data-subject="agriculture">AGRICULTURE</div>
-            <div class="subject" data-subject="geography">GEOGRAPHY</div>
-        </div>
-
-        <div id="books">
-            <h3>Featured Books</h3>
-        </div>
-
-        <!-- Upload Section -->
-        <div id="uploadSection">
-            <h3>Upload New Book</h3>
-            <input type="text" id="bookTitle" placeholder="Book Title">
-            <input type="text" id="bookSubject" placeholder="Subject (e.g., English, Math)">
-            <input type="file" id="bookFile" accept=".pdf">
-            <button id="uploadButton">Upload Book</button>
-            <button class="back-button" onclick="goBack('uploadSection')">Back</button>
-        </div>
-
-        <!-- Online Class Section -->
-        <div id="onlineClassSection">
-            <h3>Online Classes</h3>
-            <button class="back-button" onclick="goBack('onlineClassSection')">Back</button>
-            <h4>Videos</h4>
-            <div id="videosContainer"></div>
-            <input type="text" id="videoTitle" placeholder="Video Title">
-            <input type="file" id="videoFile" accept="video/*">
-            <button id="uploadVideoButton">Upload Video</button>
-            <h4>Exams</h4>
-            <div id="examsContainer"></div>
-        </div>
-
-        <div id="readingSection">
-            <h3>Read Book</h3>
-            <button class="back-button" onclick="goBack('readingSection')">Back</button>
-            <input type="text" id="searchInput" placeholder="Search for books..." onkeyup="searchBooks()">
-            <div id="bookReader"></div>
-        </div>
-
-        <div id="catalogSection">
-            <h3>Book Catalog</h3>
-            <button class="back-button" onclick="goBack('catalogSection')">Back</button>
-            <div id="catalogBooks"></div>
-        </div>
+        
+        <footer>
+            <p>&copy; 2024 Entertainment Hub. All rights reserved.</p>
+        </footer>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Focus Library. All rights reserved.</p>
-    </footer>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Admin Login</h2>
-            <input type="text" id="adminUsername" placeholder="Username">
-            <input type="password" id="adminPassword" placeholder="Password">
-            <button id="loginButton">Login</button>
-        </div>
-    </div>
-
-    <script>
-        const encouragementMessages = [
-            "Keep pushing your limits!",
-            "You are capable of amazing things!",
-            "Believe in yourself!",
-            "Success is a journey, not a destination.",
-            "Every step forward counts!",
-            "Your hard work will pay off!"
-        ];
-
-        let currentMessageIndex = 0;
-        const movingText = document.getElementById('movingText');
-
-        function displayEncouragement() {
-            movingText.textContent = encouragementMessages[currentMessageIndex];
-            currentMessageIndex = (currentMessageIndex + 1) % encouragementMessages.length;
-        }
-
-        setInterval(displayEncouragement, 3000); // Change message every 3 seconds
-
-        const booksData = {
-            english: [],
-            mathematics: [],
-            physics: [],
-            chemistry: [],
-            biology: [],
-            agriculture: [],
-            geography: []
-        };
-
-        const generalCatalog = ['Book1', 'Book2', 'Book3']; // Sample books for catalog
-        const videos = []; // Sample videos for online classes
-        const exams = ['Exam1', 'Exam2']; // Sample exams for online classes
-
-        const catalogLink = document.getElementById('catalog-link');
-        const onlineClassesLink = document.getElementById('onlineClassesLink');
-        const loginLink = document.getElementById('login-link');
-        const loginModal = document.getElementById('loginModal');
-        const readingSection = document.getElementById('readingSection');
-        const catalogSection = document.getElementById('catalogSection');
-        const uploadSection = document.getElementById('uploadSection');
-        const onlineClassSection = document.getElementById('onlineClassSection');
-        const catalogBooks = document.getElementById('catalogBooks');
-        const bookReader = document.getElementById('bookReader');
-        const videosContainer = document.getElementById('videosContainer');
-        const examsContainer = document.getElementById('examsContainer');
-
-        let isAdmin = false;
-
-        // Event Listeners
-        catalogLink.addEventListener('click', (event) => {
-            event.preventDefault();
-            displayCatalog();
-        });
-
-        onlineClassesLink.addEventListener('click', (event) => {
-            event.preventDefault();
-            onlineClassSection.style.display = 'block';
-            displayOnlineClasses();
-        });
-
-        loginLink.addEventListener('click', (event) => {
-            event.preventDefault();
-            loginModal.style.display = 'block';
-        });
-
-        const closeModal = (modal) => {
-            modal.style.display = 'none';
-        };
-
-        document.querySelector('.close').onclick = () => closeModal(loginModal);
-
-        document.getElementById('loginButton').onclick = () => {
-            const username = document.getElementById('adminUsername').value;
-            const password = document.getElementById('adminPassword').value;
-            if (username === 'admin' && password === 'password') {
-                isAdmin = true;
-                alert('Logged in as Admin');
-                closeModal(loginModal);
-                uploadSection.style.display = 'block'; // Show upload section on login
-            } else {
-                alert('Invalid credentials');
-            }
-        };
-
-        document.getElementById('uploadButton').onclick = () => {
-            const title = document.getElementById('bookTitle').value;
-            const subject = document.getElementById('bookSubject').value.toLowerCase();
-            const fileInput = document.getElementById('bookFile');
-            const file = fileInput.files[0];
-
-            if (title && subject && file && file.type === 'application/pdf') {
-                const reader = new FileReader();
-                reader.onload = function() {
-                    // Simulate storing the book
-                    if (booksData[subject]) {
-                        booksData[subject].push(title);
-                        generalCatalog.push(title); // Add to general catalog
-                        alert('Book uploaded successfully!');
-                        document.getElementById('bookTitle').value = '';
-                        document.getElementById('bookSubject').value = '';
-                        fileInput.value = ''; // Reset file input
-                    } else {
-                        alert('Invalid subject!');
-                    }
-                };
-                reader.readAsDataURL(file);
-            } else {
-                alert('Please fill in all fields and select a valid PDF file.');
-            }
-        };
-
-        document.getElementById('uploadVideoButton').onclick = () => {
-            const title = document.getElementById('videoTitle').value;
-            const videoInput = document.getElementById('videoFile');
-            const video = videoInput.files[0];
-
-            if (title && video) {
-                const reader = new FileReader();
-                reader.onload = function() {
-                    const videoElement = document.createElement('video');
-                    videoElement.controls = true;
-                    videoElement.src = reader.result; // Use the result from FileReader
-                    const videoDiv = document.createElement('div');
-                    videoDiv.className = 'video';
-                    videoDiv.innerHTML = `<strong>${title}</strong>`;
-                    videoDiv.appendChild(videoElement);
-                    videosContainer.appendChild(videoDiv); // Add the video to the container
-                    videos.push({ title, src: reader.result }); // Store video with title and source
-                    alert('Video uploaded successfully!');
-                    document.getElementById('videoTitle').value = '';
-                    videoInput.value = ''; // Reset file input
-                };
-                reader.readAsDataURL(video);
-            } else {
-                alert('Please fill in all fields and select a video file.');
-            }
-        };
-
-        function displayBooks(subject) {
-            const booksContainer = document.getElementById('books');
-            booksContainer.innerHTML = `<h3>${subject.charAt(0).toUpperCase() + subject.slice(1)} Books</h3>`;
-            const books = booksData[subject] || [];
-            if (books.length === 0) {
-                booksContainer.innerHTML += '<div>No books available for this subject.</div>';
-            } else {
-                books.forEach(book => {
-                    const bookDiv = document.createElement('div');
-                    bookDiv.className = 'book';
-                    bookDiv.textContent = book;
-                    booksContainer.appendChild(bookDiv);
-                });
-            }
-        }
-
-        function displayCatalog() {
-            catalogSection.style.display = 'block';
-            catalogBooks.innerHTML = '';
-
-            generalCatalog.forEach(book => {
-                const bookDiv = document.createElement('div');
-                bookDiv.className = 'book';
-                bookDiv.textContent = book;
-                bookDiv.onclick = () => openBookReader(book);
-                catalogBooks.appendChild(bookDiv);
-            });
-        }
-
-        function openBookReader(bookTitle) {
-            bookReader.innerHTML = `<h4>${bookTitle}</h4>
-                <iframe src="${bookTitle}.pdf" width="100%" height="500px" frameborder="0"></iframe>`;
-            readingSection.style.display = 'block';
-            catalogSection.style.display = 'none'; // Hide catalog when reading
-        }
-
-        function searchBooks() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const bookTitles = generalCatalog.filter(book => book.toLowerCase().includes(input));
-            catalogBooks.innerHTML = '';
-            bookTitles.forEach(book => {
-                const bookDiv = document.createElement('div');
-                bookDiv.className = 'book';
-                bookDiv.textContent = book;
-                bookDiv.onclick = () => openBookReader(book);
-                catalogBooks.appendChild(bookDiv);
-            });
-        }
-
-        function displayOnlineClasses() {
-            videosContainer.innerHTML = '';
-            examsContainer.innerHTML = '';
-
-            videos.forEach(video => {
-                const videoDiv = document.createElement('div');
-                videoDiv.className = 'video';
-                videoDiv.innerHTML = `<strong>${video.title}</strong>
-                    <video controls>
-                        <source src="${video.src}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>`;
-                videosContainer.appendChild(videoDiv);
-            });
-
-            exams.forEach(exam => {
-                const examDiv = document.createElement('div');
-                examDiv.className = 'book';
-                examDiv.textContent = exam;
-                examsContainer.appendChild(examDiv);
-            });
-        }
-
-        function goBack(section) {
-            document.getElementById(section).style.display = 'none';
-        }
-    </script>
 </body>
 </html>
