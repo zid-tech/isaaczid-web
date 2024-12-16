@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Registration</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+       
+        background: url("page.jpg") no-repeat center center fixed;
+    }
+    .hero{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+    .form-box{
+        width: 380px;
+        height: 480px;
+        position: relative;
+        margin: 6% auto;
+        background: transparent;
+        padding: 5px;
+        overflow: hidden;
+    }
+    .button-box{
+        width: 220px;
+        margin: 35px auto;
+        position: relative;
+        border-radius: 30px;
+        box-shadow: 0 0 20px 9px #777;
+    }
+    .togg-btn{
+        padding: 10px 30px; 
+        cursor: pointer;
+        background: transparent;
+        border: 0;
+        outline: none;
+        position: relative;
+    }
+    #btn{
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 110px;
+        height: 100%;
+        background: linear-gradient(to right, #3fd371, #3fd371);
+        border-radius: 30px;
+        transition: .5s;
+    }
+    .input-group{
+        top: 180px;
+        position: absolute;
+        width: 280px;
+        transition: .5s;
+    }
+    .input-feild{
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 1px solid #3fd371;
+        outline: none;
+        background: transparent;
+        position: relative;
+        color: #777;
+    }
+    .input-feild-icon {
+        position: relative;
+        width: 100%;
+    }
+    .input-feild-icon input {
+        padding-right: 30px; /* Space for the icon */
+    }
+    .input-feild-icon .fa {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #3fd371;
+    }
+    .submit-btn{
+        width: 85%;
+        cursor: pointer;
+        display: block;
+        margin: auto;
+        background: #3fd371;
+        border: 0;
+        outline: none;
+        border-radius: 30px;
+        height: 30px;
+    }
+    .check-box{
+        margin: 30px 10px 30px 0;
+    }
+    span{
+        color: #777;
+        font-size: 12px;
+        bottom: 68px;
+        position: absolute;
+    }
+    #login{
+        left: 50px;
+    }
+    #register{
+        left: 450px;
+    }
+</style>
+<body>
+    <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button id="login-btn" type="button" class="togg-btn" onclick="login()" onmouseover="hoverLogin()" onmouseout="resetHover()">Log In</button>
+                <button id="register-btn" type="button" class="togg-btn" onclick="register()" onmouseover="hoverRegister()" onmouseout="resetHover()" style="color: #fff;">Register</button>  
+            </div>
+            <form id="login" class="input-group" action="validate.php" method="post">
+                <div class="input-feild-icon">
+                    <input type="text" class="input-feild" placeholder="Username" name="username1">
+                    <i class="fa fa-user"></i> <!-- Envelope icon for email -->
+                </div>
+                <div class="input-feild-icon">
+                    <input type="password" class="input-feild" placeholder="Password" name="password1">
+                    <i class="fa fa-lock"></i> <!-- Lock icon for password -->
+                </div>
+                <input type="checkbox" class="check-box"><span>Remember Password</span>
+                <button type="submit" class="submit-btn" name="login">Login</button>
+            </form>
+            <form id="register" class="input-group" action="send.php" method="post">
+                <div class="input-feild-icon">
+                    <input type="text" class="input-feild" placeholder="Username" required name="username2">
+                    <i class="fa fa-user"></i> <!-- User icon for username -->
+                </div>
+                <div class="input-feild-icon">
+                    <input type="email" class="input-feild" placeholder="Email" required name="email">
+                    <i class="fa fa-envelope"></i> <!-- Envelope icon for email -->
+                </div>
+                <div class="input-feild-icon">
+                    <input type="password" class="input-feild" placeholder="Password" required name="password2">
+                    <i class="fa fa-lock"></i> <!-- Lock icon for password -->
+                </div>
+                <input type="checkbox" class="check-box"><span>I agree to terms and conditions</span>
+                <button type="submit" class="submit-btn" name="register">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+        var Z = document.getElementById("btn");
+        var loginBtn = document.getElementById("login-btn");
+        var registerBtn = document.getElementById("register-btn");
+
+        function register(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            Z.style.left = "110px";
+        }
+
+        function login(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            Z.style.left = "0";
+        }
+        
+        function hoverLogin() {
+            registerBtn.style.color = "white";  // When hovering over "Login", change "Register" text to white
+        }
+
+        function hoverRegister() {
+            loginBtn.style.color = "white";    // When hovering over "Register", change "Login" text to white
+        }
+
+        function resetHover() {
+            registerBtn.style.color = "#555";  // Reset "Register" text color when not hovering
+            loginBtn.style.color = "#555";     // Reset "Login" text color when not hovering
+        }
+    </script>
+</body>
+</html>
