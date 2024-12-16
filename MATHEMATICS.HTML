@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books by Subject</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("hom.jpg") no-repeat center center fixed;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+         header {
+            background: rgba(0, 123, 255, 0.7);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            padding-left: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        header h1 i {
+            margin-right: 10px;
+            font-size: 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1em;
+        }
+        .subject-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            justify-content: center;
+        }
+        .subject {
+            background-color: #444;
+            color: white;
+            padding: 1em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .subject:hover {
+            background-color: #555;
+        }
+        /* Advertisement Section - Fixed Below Icons */
+        .advertisement {
+            margin-top: 150px; /* Space it below the icons */
+            display: flex;
+            justify-content: space-between;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Wrapper for the ads */
+        .advertisement-wrapper {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        /* Individual ad item */
+        .ad-item {
+            width: 200%;
+            padding: 70px;
+            background-color: #f8f8f8;
+            border-radius: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Hover effect for ads */
+        .ad-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .ad-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .ad-item p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        .books-list {
+            display: none;
+            margin-top: 2em;
+            padding: 1em;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        .book {
+            margin: 0.5em 0;
+        }
+        .book a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .subject-list {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MATHEMATICS</h1>
+</header>
+
+<div class="container">
+
+    <h2>EYE OPENER-BOOKS</h2>
+    <div class="subject-list">
+        <!-- Add anchor tags with links to corresponding pages -->
+        <a href="JCE.html" class="navbar-link">
+            <div class="subject">JCE-BOOKS</div>
+        </a>
+        <a href="MSCE.html" class="navbar-link">
+            <div class="subject">MSCE-BOOKS</div>
+        </a>
+        
+    </div>
+</div>
+  <!-- Advertisement Section -->
+<div class="advertisement">
+    <div class="advertisement-wrapper">
+        <div class="ad-item">
+            <img src="chemi.jpg" alt="Ad 1">
+            <p>BEST CHEMISTRY BOOKS AVAILABLE</p>
+        </div>
+        <div class="ad-item">
+            <img src="mathe.jpg" alt="Ad 2">
+            <p>BEST MATHEMATICS BOOKS AVAILABLE</p>
+        </div>
+        <div class="ad-item">
+            <img src="bio.jpg" alt="Ad 3">
+            <p>BEST BIOLOGY BOOK AVAILABLE</p>
+        </div>
+        <div class="ad-item">
+            <img src="bio.jpg" alt="Ad 3">
+            <p>BEST BIOLOGY BOOK AVAILABLE</p>
+        </div>
+        <div class="ad-item">
+            <img src="bio.jpg" alt="Ad 3">
+            <p>BEST BIOLOGY BOOK AVAILABLE</p>
+        </div>
+        <div class="ad-item">
+            <img src="bio.jpg" alt="Ad 3">
+            <p>BEST BIOLOGY BOOK AVAILABLE</p>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    let adWrapper = document.querySelector('.advertisement-wrapper');
+    let adItems = document.querySelectorAll('.ad-item');
+    let currentIndex = 0;
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % adItems.length; // Move to the next ad
+        let offset = -currentIndex * 100; // Calculate the offset for the slide
+        adWrapper.style.transform = `translateX(${offset}%)`; // Apply the sliding transition
+    }, 2000); // Change every 3 seconds
+</script>
+</script
+<script>
+</body>
+</html>

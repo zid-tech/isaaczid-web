@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EYE OPENER ONLINE LIBRARY</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('hom.jpg'); /* Add your background image URL */
+            background-size: cover;
+            background-position: center;
+            color: #333;
+        }
+
+        header {
+            background: rgba(0, 123, 255, 0.7);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .search-bar {
+            margin: 20px auto;
+            max-width: 600px;
+            display: flex;
+        }
+
+        .search-bar input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .navigation a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 123, 255, 0.7);
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .book-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1000px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+        }
+
+        .book-item {
+            width: 30%;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+        }
+
+        .book-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-item p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .book-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Modal for viewing books */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .book-item {
+                width: 45%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .book-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>EYE OPENER ONLINE LIBRARY</h1>
+   <h1>FORM 3-BOOKS BIOLOGY</h1>
+</header>
+<!-- Rectangular Box for "Difference Books" -->
+<div class="book-list">
+    <div class="book-item">
+        <a href="CHEMISTRY.pdf" target="_blank">
+            <img src="hom.jpg" alt="CHEMISTRY">
+            <p>CHEMISTRY-QUESTIONS & ANSWERS</p>
+        </a>
+    </div>
+    <div class="book-item">
+        <a href="BIOLOGY.pdf" target="_blank">
+            <img src="hom.jpg" alt="BIOLOGY ">
+            <p>BIOLOGY-QUESTIONS & ANSWERS</p>
+        </a>
+    </div>
+    <div class="book-item">
+        <a href="AGRICULTURE.pdf" target="_blank">
+            <img src="hom.jpg" alt="Book 3">
+            <p>PHYSICS-QUESTIONS & ANSWERS</p>
+        </a>
+    </div>
+</div>
+<!-- Rectangular Box for "Difference Books" -->
+<div class="book-list">
+    <div class="book-item">
+        <a href="CHEMISTRY.pdf" target="_blank">
+            <img src="hom.jpg" alt="CHEMISTRY">
+            <p>CHEMISTRY-QUESTIONS & ANSWERS</p>
+        </a>
+    </div>
+    <div class="book-item">
+        <a href="BIOLOGY.pdf" target="_blank">
+            <img src="hom.jpg" alt="BIOLOGY ">
+            <p>BIOLOGY-QUESTIONS & ANSWERS</p>
+        </a>
+    </div>
+    <div class="book-item">
+        <a href="AGRICULTURE.pdf" target="_blank">
+            <img src="hom.jpg" alt="Book 3">
+            <p>PHYSICS-QUESTIONS & ANSWERS</p>
+        </a>
+    </div>
+</div>
+<!-- Rectangular Box for "Difference Books" -->
+<div class="book-list">
+    <div class="book-item">
+        <a href="CHEMISTRY.pdf" target="_blank">
+            <img src="hom.jpg" alt="CHEMISTRY">
+            <p>CHEMISTRY-QUESTIONS & ANSWERS</p>
+        </a>
+    </div>
+    <div class="book-item">
+        <a href="BIOLOGY.pdf" target="_blank">
+            <img src="hom.jpg" alt="BIOLOGY ">
+            <p>BIOLOGY-QUESTIONS & ANSWERS</p>
+        </a>
+    </div>
+    <div class="book-item">
+        <a href="AGRICULTURE.pdf" target="_blank">
+            <img src="hom.jpg" alt="Book 3">
+            <p>PHYSICS-QUESTIONS & ANSWERS</p>
+        </a>
+    </div>
+</div>
+
+<!-- Modal for viewing books -->
+<div id="book-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <iframe id="book-frame" src="" frameborder="0" width="100%" height="500px"></iframe>
+  </div>
+</div>
+
+<script>
+  const bookItems = document.querySelectorAll('.book-item a');
+  const modal = document.getElementById('book-modal');
+  const iframe = document.getElementById('book-frame');
+  const closeModal = document.querySelector('.close');
+
+  bookItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      iframe.src = item.getAttribute('href');
+      modal.style.display = 'block';
+    });
+  });
+
+  closeModal.onclick = function() {
+    modal.style.display = 'none';
+    iframe.src = '';  // Stop the PDF or content when closing the modal
+  };
+
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+      iframe.src = '';
+    }
+  };
+</script>
+
+<footer>
+    <p>Eye Opener Online Library-2024 | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

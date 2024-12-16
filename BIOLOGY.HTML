@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books by Subject</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("hom.jpg") no-repeat center center fixed;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1em;
+        }
+        .subject-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            justify-content: center;
+        }
+        .subject {
+            background-color: #444;
+            color: white;
+            padding: 1em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .subject:hover {
+            background-color: #555;
+        }
+        .books-list {
+            display: none;
+            margin-top: 2em;
+            padding: 1em;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        .book {
+            margin: 0.5em 0;
+        }
+        .book a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .subject-list {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>BIOLOGY</h1>
+</header>
+
+<div class="container">
+    <h2>EYE OPENER-BOOKS</h2>
+    <div class="subject-list">
+        <!-- Add anchor tags with links to corresponding pages -->
+        <a href="BIO1.html" class="navbar-link">
+            <div class="subject">BIOLOGY BOOKS</div>
+        </a>
+       
+</div>
+
+</body>
+</html>
